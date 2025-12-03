@@ -23,9 +23,6 @@ jobs:
       
     - name: Build Project
       run: npx vite build
-      env:
-        # Inyecta la variable secreta configurada en GitHub Settings
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3

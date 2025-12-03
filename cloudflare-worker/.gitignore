@@ -1,0 +1,10 @@
+# Wrangler
+.wrangler/
+wrangler.toml.bak
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
