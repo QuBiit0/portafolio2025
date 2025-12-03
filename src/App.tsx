@@ -1,4 +1,5 @@
 import React from 'react';
+import { LanguageProvider } from './context/LanguageContext';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
@@ -9,19 +10,21 @@ import ChatAssistant from './components/ChatAssistant';
 
 function App() {
   return (
-    <div className="min-h-screen bg-tech-bg text-slate-200">
-      <Navigation />
-      
-      <main>
-        <Hero />
-        <Skills />
-        <Experience />
-        <Education />
-        <Contact />
-      </main>
+    <LanguageProvider>
+      <div className="min-h-screen bg-tech-bg text-slate-200">
+        <Navigation />
 
-      <ChatAssistant />
-    </div>
+        <main>
+          <Hero />
+          <Skills />
+          <Experience />
+          <Education />
+          <Contact />
+        </main>
+
+        <ChatAssistant />
+      </div>
+    </LanguageProvider>
   );
 }
 

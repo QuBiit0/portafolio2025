@@ -2,17 +2,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award, BadgeCheck } from 'lucide-react';
 import { EDUCATION, CERTIFICATIONS } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 
 const Education: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="education" className="py-24 bg-tech-bg relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-slate-900 to-transparent opacity-50 pointer-events-none"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        
+
         <div className="flex flex-col lg:flex-row gap-16">
-          
+
           {/* Education Column */}
           <div className="flex-1">
             <motion.div
@@ -24,7 +27,7 @@ const Education: React.FC = () => {
               <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 text-tech-accent">
                 <GraduationCap size={24} />
               </div>
-              <h2 className="text-3xl font-bold text-white">Education</h2>
+              <h2 className="text-3xl font-bold text-white">{t('education.title')}</h2>
             </motion.div>
 
             <div className="space-y-8 pl-4 border-l border-slate-800">
@@ -59,7 +62,7 @@ const Education: React.FC = () => {
               <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 text-tech-purple">
                 <Award size={24} />
               </div>
-              <h2 className="text-3xl font-bold text-white">Certifications & Achievements</h2>
+              <h2 className="text-3xl font-bold text-white">{t('education.certifications')}</h2>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -1,20 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SKILLS } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 
 const Skills: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="py-24 bg-tech-bg relative">
       <div className="container mx-auto px-6">
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Core Technologies</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{t('skills.title')}</h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            My stack is focused on high-performance applications and intelligent automation systems.
+            {t('skills.description')}
           </p>
         </motion.div>
 
@@ -33,9 +36,9 @@ const Skills: React.FC = () => {
               </div>
               <h3 className="text-xl font-bold text-white mb-2">{skill.name}</h3>
               <p className="text-sm text-slate-400 mb-4 h-10">{skill.description}</p>
-              
+
               <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                <motion.div 
+                <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
                   transition={{ duration: 1, delay: 0.5 }}

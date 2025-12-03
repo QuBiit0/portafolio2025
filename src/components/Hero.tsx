@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Download, ChevronDown, Terminal, Sparkles, Code2, Cpu } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 
 const CodeWindow = () => {
   const codeLines = [
@@ -79,6 +80,8 @@ const TypingLine = ({ line, delay }: { line: { text: string, color: string }, de
 };
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12">
       {/* Background Elements */}

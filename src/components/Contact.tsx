@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github } from 'lucide-react';
 import { PERSONAL_INFO } from '../constants';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
   // Access emails directly from the constant
   const { email, secondaryEmail, socials, name } = PERSONAL_INFO;
 
@@ -22,14 +24,14 @@ const Contact: React.FC = () => {
           </p>
 
           <div className="flex flex-col items-center gap-4 mb-16">
-            <a 
-              href={`mailto:${email}`} 
+            <a
+              href={`mailto:${email}`}
               className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-tech-accent to-tech-purple text-white font-bold rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/20"
             >
               <Mail size={20} />
               Say Hello
             </a>
-            
+
             <div className="text-slate-400 text-sm flex flex-col gap-2 mt-4">
               <a href={`mailto:${email}`} className="hover:text-tech-accent transition-colors">
                 {email}

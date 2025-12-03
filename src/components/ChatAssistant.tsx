@@ -3,12 +3,14 @@ import { Bot, X, Send, Sparkles, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
+import { useLanguage } from '../context/LanguageContext';
 
 const ChatAssistant: React.FC = () => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: 'Hola! Soy el asistente virtual de Leandro. ¿En qué puedo ayudarte hoy? Pregúntame sobre su experiencia, skills o proyectos.' }
+    { role: 'model', text: t('chat.welcome') }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -118,8 +120,8 @@ const ChatAssistant: React.FC = () => {
                 >
                   <div
                     className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === 'user'
-                        ? 'bg-tech-accent text-slate-900 rounded-br-none font-medium'
-                        : 'bg-slate-800 text-slate-200 rounded-bl-none border border-slate-700'
+                      ? 'bg-tech-accent text-slate-900 rounded-br-none font-medium'
+                      : 'bg-slate-800 text-slate-200 rounded-bl-none border border-slate-700'
                       }`}
                   >
                     {msg.text}
