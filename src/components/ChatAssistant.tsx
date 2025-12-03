@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Bot, X, Send, Sparkles, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
 import { useLanguage } from '../context/LanguageContext';
@@ -124,7 +125,53 @@ const ChatAssistant: React.FC = () => {
                       : 'bg-slate-800 text-slate-200 rounded-bl-none border border-slate-700'
                       }`}
                   >
-                    {msg.text}
+                    {msg.role === 'user' ? (
+                      msg.text
+                    ) : (
+                      <ReactMarkdown
+                        components={{
+                          // Estilos para párrafos
+                          p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                          // Estilos para listas
+                          ul: ({ children }) => <ul className="list-disc list-inside mb-2 space-y-1">{children}</ul>,
+                          ol: ({ children }) => <ol className="list-decimal list-inside mb-2 space-y-1">{children}</ol>,
+                          li: ({ children }) => <li className="ml-2">{children}</li>,
+                          // Estilos para texto en negrita
+                          strong: ({ children }) => <strong className="font-bold text-tech-accent">{children}</strong>,
+                          // Estilos para texto en cursiva
+                          em: ({ children }) => <em className="italic text-slate-300">{children}</em>,
+                          // Estilos para código inline
+                          code: ({ children }) => (
+                            <code className="bg-slate-900 px-1.5 py-0.5 rounded text-tech-accent font-mono text-xs">
+                              {children}
+                            </code>
+                          ),
+                          // Estilos para bloques de código
+                          pre: ({ children }) => (
+                            <pre className="bg-slate-900 p-2 rounded-lg overflow-x-auto my-2">
+                              {children}
+                            </pre>
+                          ),
+                          // Estilos para headings
+                          h1: ({ children }) => <h1 className="text-lg font-bold mb-2 text-white">{children}</h1>,
+                          h2: ({ children }) => <h2 className="text-base font-bold mb-2 text-white">{children}</h2>,
+                          h3: ({ children }) => <h3 className="text-sm font-bold mb-1 text-white">{children}</h3>,
+                          // Estilos para links
+                          a: ({ children, href }) => (
+                            <a
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-tech-accent hover:underline"
+                            >
+                              {children}
+                            </a>
+                          ),
+                        }}
+                      >
+                        {msg.text}
+                      </ReactMarkdown>
+                    )}
                   </div>
                 </div>
               ))}

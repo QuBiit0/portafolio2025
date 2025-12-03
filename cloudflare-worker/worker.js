@@ -5,9 +5,17 @@
 
 export default {
     async fetch(request, env) {
-        // Configurar CORS para permitir llamadas desde tu dominio
+        // Obtener el origen del request
+        const origin = request.headers.get('Origin');
+        const allowedOrigins = [
+            'https://leandroalvarez.com.ar',
+            'http://localhost:3000',
+            'http://localhost:5173'
+        ];
+
+        // Configurar CORS para permitir solo dominios autorizados
         const corsHeaders = {
-            'Access-Control-Allow-Origin': '*', // En producción, cambia esto a 'https://leandroalvarez.com.ar'
+            'Access-Control-Allow-Origin': allowedOrigins.includes(origin) ? origin : 'https://leandroalvarez.com.ar',
             'Access-Control-Allow-Methods': 'POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type',
         };
