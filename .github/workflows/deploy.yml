@@ -19,10 +19,10 @@ jobs:
         node-version: '20'
     
     - name: Install Dependencies
-      run: npm install
+      run: npm ci
       
     - name: Build Project
-      run: npm run build
+      run: npx vite build
       env:
         # Inyecta la variable secreta configurada en GitHub Settings
         GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
