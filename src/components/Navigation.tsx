@@ -53,7 +53,7 @@ const Navigation: React.FC = () => {
             title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
           >
             <Globe size={16} />
-            {language === 'es' ? 'EN' : 'ES'}
+            {language === 'es' ? 'ES' : 'EN'}
           </button>
         </div>
 
@@ -89,7 +89,7 @@ const Navigation: React.FC = () => {
             className="flex items-center gap-2 text-2xl font-medium text-slate-300 hover:text-tech-accent"
           >
             <Globe size={28} />
-            {language === 'es' ? 'English' : 'Español'}
+            {language === 'es' ? 'Español' : 'English'}
           </button>
         </div>
       )}
